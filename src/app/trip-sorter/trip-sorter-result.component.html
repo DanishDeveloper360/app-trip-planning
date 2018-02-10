@@ -1,0 +1,28 @@
+<div class="trip-wrapper" *ngIf="tripData && tripData.length">
+
+  <p>The {{ detail.sortType }} trip from
+    <strong class="destination departure">{{detail.departure}}</strong> to
+    <strong class="destination arrival">{{detail.arrival}}</strong> will take around
+    <strong class="totalTripTime" >{{detail.totalTripTime}}</strong> and will cost you about
+    <strong class="price totalTripPrice">{{detail.totalTripPrice}} {{detail.currency}}</strong>
+  </p>
+  <div class="trip-item" *ngFor="let trip of tripData; let i = index; let isLast = last">
+    <div class="trip-item-title destination">{{trip.departure}}</div>
+    <div class="trip-item-details">
+      <div class="trip-item-details-transport">
+        <i class="fa fa-fw fa-{{trip.transport}}" tooltip="{{trip.transport | uppercase}}"></i>
+      </div>
+      <div>
+        <i class="glyphicon glyphicon-time"></i> {{trip.time}} -
+        <span class="price"> {{trip.price}} &#8364; </span>
+
+        <span class="discountContainer" *ngIf="trip.discount != 0">
+          <span class="preDiscountCostText">{{trip.originalPrice}} &#8364;</span>
+          <span class="discountPercentageText">{{trip.discount}}% off</span>
+        </span>
+      </div>
+    </div>
+    <div class="trip-item-title destination" *ngIf="isLast">{{trip.arrival}}</div>
+  </div>
+
+</div>

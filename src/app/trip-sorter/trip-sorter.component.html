@@ -1,0 +1,8 @@
+<div class="container jumbotron" style="width:800px;">
+  <h1 class="display-4 text-center"> <strong> Trip Sorter  </strong></h1>
+
+  <search-trip (searchTripEvent) = "searchTrip($event)" [cities]="cities" ></search-trip>
+
+  <trip-sorter-result [tripData]="tripRoutes" [detail]="resultDetails" ></trip-sorter-result>
+
+</div>

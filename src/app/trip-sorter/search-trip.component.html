@@ -1,0 +1,43 @@
+<form>
+  <div class="alert alert-danger" *ngIf="isError">
+    {{errorMessage}}
+  </div>
+
+  <div class="row form-group">
+    <div class="col-md-6">
+      <div class="bootstrap-typeahead clearfix open" style="position: relative;">
+        <div class="bootstrap-typeahead-input" tabindex="-1" style="outline: none; position: relative;">
+          <input type="text" name="from" id="from" placeholder="Enter Departure" [(ngModel)]="trip.departure" [typeahead]="cities"
+            autocomplete="off" class="form-control bootstrap-typeahead-input-main">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="bootstrap-typeahead clearfix open" style="position: relative;">
+        <div class="bootstrap-typeahead-input" tabindex="-1" style="outline: none; position: relative;">
+          <input type="text" id="to" name="to" placeholder="Enter Arrival" [(ngModel)]="trip.arrival" [typeahead]="cities" autocomplete="off"
+            class="form-control bootstrap-typeahead-input-main">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clear-fix"></div>
+
+
+  <div class="row form-group">
+    <div class="col-md-4 btn-group">
+      <a href="javascript:void(0);" id="cheapest_button" [ngClass]="{'active': trip.tripType == 'price'}" class="active btn btn-primary"
+        role="button" value="price" (click)="tripSortType($event, 'price', 'Cheapest')">Cheapest</a>
+      <a href="javascript:void(0);" id="fastest_button" [ngClass]="{'active': trip.tripType == 'minutes'}" class="btn btn-primary"
+        role="button" value="minutes" (click)="tripSortType($event, 'minutes', 'Fastest')">Fastest</a>
+    </div>
+    <input type="hidden" value="cheapest" id="type">
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-success" (click)="searchTrip();">
+      <i class="glyphicon glyphicon-search"></i> SEARCH TRIP
+    </button>
+  </div>
+</form>
