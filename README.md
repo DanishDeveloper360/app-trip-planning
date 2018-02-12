@@ -1,5 +1,7 @@
 # app trip planning
 
+The project is created using TypeScript with tooling : angular-cli & it is using Angular 2 with TypeScript.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
 
 ## Development server
